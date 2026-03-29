@@ -1,185 +1,214 @@
-/* ============================================
-   ERGODICITY LIBRARY — Main JavaScript
-   ============================================ */
+const page = document.body.dataset.page || "home";
+const root = document.body.dataset.root || "";
 
-// --- Brownian Motion Background Canvas ---
-(function initCanvas() {
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+const internalLinks = {
+  home: root || "./",
+  about: `${root}about-the-library/`,
+  bookIntro: `${root}ergodicity-library-an-introduction/`,
+  bookAdventures: `${root}adventures-in-ergodicity-economics/`,
+  videos: `${root}videos/`,
+  plots: `${root}plots/`,
+  interactive: `${root}interactive/`,
+  education: `${root}education/`,
+  research: `${root}research/`,
+  ergodicitygpt: `${root}ergodicitygpt/`,
+  tutorials: `${root}video-tutorials/`,
+  blog: `${root}blog/`,
+  projects: `${root}projects/`,
+  development: `${root}development/`,
+  author: `${root}about-the-author/`,
+  postIntro: `${root}post/introducing-ergodicity-library/`,
+};
 
-  let w, h, particles, trails;
-  const PARTICLE_COUNT = 60;
-  const TRAIL_LENGTH = 40;
+const menuSections = [
+  {
+    title: "Overview",
+    links: [
+      { id: "home", label: "Home", href: internalLinks.home },
+      { id: "about", label: "About the Library", href: internalLinks.about },
+    ],
+  },
+  {
+    title: "Books",
+    links: [
+      { id: "book-intro", label: "Ergodicity Library: An Introduction", href: internalLinks.bookIntro },
+      { id: "book-adventures", label: "Adventures In Ergodicity Economics", href: internalLinks.bookAdventures },
+    ],
+  },
+  {
+    title: "Demonstrations",
+    links: [
+      { id: "videos", label: "Videos", href: internalLinks.videos },
+      { id: "plots", label: "Plots", href: internalLinks.plots },
+      { id: "interactive", label: "Interactive", href: internalLinks.interactive },
+    ],
+  },
+  {
+    title: "Useful links and materials",
+    links: [
+      { id: "education", label: "Education", href: internalLinks.education },
+      { id: "research", label: "Research", href: internalLinks.research },
+      { id: "ergodicitygpt", label: "ErgodicityGPT", href: internalLinks.ergodicitygpt },
+      { id: "tutorials", label: "Video tutorials", href: internalLinks.tutorials },
+      { id: "blog", label: "Blog", href: internalLinks.blog },
+      { id: "projects", label: "Projects", href: internalLinks.projects },
+      { id: "development", label: "Development", href: internalLinks.development },
+      { id: "author", label: "About the author", href: internalLinks.author },
+    ],
+  },
+];
 
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
+function shellMarkup() {
+  const sections = menuSections
+    .map(
+      (section) => `
+        <section class="menu-section">
+          <h2 class="menu-section__title">${section.title}</h2>
+          <div class="menu-list">
+            ${section.links
+              .map(
+                (link) => `
+                  <a href="${link.href}" data-nav-id="${link.id}" class="${page === link.id ? "is-active" : ""}">
+                    ${link.label}
+                  </a>
+                `
+              )
+              .join("")}
+          </div>
+        </section>
+      `
+    )
+    .join("");
 
-  function createParticles() {
-    particles = [];
-    trails = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const x = Math.random() * w;
-      const y = Math.random() * h;
-      particles.push({ x, y, vx: 0, vy: 0, size: Math.random() * 1.5 + 0.5 });
-      trails.push([{ x, y }]);
-    }
-  }
+  return `
+    <div class="wix-banner">
+      <div class="page-wrap wix-banner__inner">
+        <span class="wix-banner__logo">WIX</span>
+        <span>This website was built on Wix. Create yours today.</span>
+        <a class="wix-banner__cta" href="https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=21c90856-25fc-467c-8d3f-a7fc623d47c2" target="_blank" rel="noopener">Get Started</a>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="page-wrap site-header__inner">
+        <a class="site-brand" href="${internalLinks.home}">
+          <span class="site-brand__name">Ergodicity Library</span>
+          <span class="site-brand__links">
+            <a href="https://kendiukhov.github.io/ergodicity_library" target="_blank" rel="noopener">Documentation</a>
+            <a href="${internalLinks.bookIntro}">Book</a>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      </div>
+    </header>
+    <div class="menu-overlay" id="site-menu" aria-hidden="true">
+      <div class="menu-overlay__backdrop" data-close-menu></div>
+      <aside class="menu-panel" aria-label="Site navigation">
+        <div class="menu-panel__top">
+          <span class="menu-panel__title">Menu</span>
+          <button class="menu-close" type="button" data-close-menu>Close</button>
+        </div>
+        ${sections}
+      </aside>
+    </div>
+  `;
+}
 
-  function step() {
-    const drift = 0.15;
-    const vol = 1.8;
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      // Brownian motion: drift + volatility * random
-      p.vx = drift * (w / 2 - p.x) * 0.0001 + vol * (Math.random() - 0.5);
-      p.vy = drift * (h / 2 - p.y) * 0.0001 + vol * (Math.random() - 0.5);
-      p.x += p.vx;
-      p.y += p.vy;
+function footerMarkup() {
+  return `
+    <footer class="footer">
+      <div class="page-wrap footer-grid">
+        <section class="footer-card">
+          <h2>Sign up for the newsletter</h2>
+          <p>Keep up with new releases, research notes, and updates from the Ergodicity Library.</p>
+          <form class="demo-form" data-demo-form>
+            <div class="demo-form__row">
+              <input class="field" type="text" name="firstName" placeholder="First Name" required>
+              <input class="field" type="text" name="lastName" placeholder="Last Name" required>
+            </div>
+            <input class="field" type="email" name="email" placeholder="Email" required>
+            <textarea class="field" name="message" placeholder="Message"></textarea>
+            <button class="button" type="submit">Submit</button>
+            <div class="form-message" hidden>Thanks for submitting!</div>
+          </form>
+        </section>
+        <section class="footer-card">
+          <h2>Stay Connected with Us</h2>
+          <p>www.linktr.ee/kendiukhov</p>
+          <p>kendiukhov@gmail.com</p>
+          <p>Tuebingen, Germany</p>
+          <div class="footer-links">
+            <a href="https://kendiukhov.github.io/ergodicity_library" target="_blank" rel="noopener">Documentation</a>
+            <a href="https://github.com/Kendiukhov/ergodicity_library" target="_blank" rel="noopener">GitHub Repository</a>
+            <a href="https://chatgpt.com/g/g-6a3y1kBrK-ergodicitygpt" target="_blank" rel="noopener">ErgodicityGPT</a>
+            <a href="https://linktr.ee/kendiukhov" target="_blank" rel="noopener">Contact Us</a>
+          </div>
+          <form class="subscribe-form" data-demo-form>
+            <input class="field" type="email" name="subscribeEmail" placeholder="Enter Your Email" required>
+            <button class="button button--ghost" type="submit">Subscribe</button>
+            <div class="form-message" hidden>Thanks for subscribing!</div>
+          </form>
+          <div class="social-row">
+            <a href="https://github.com/Kendiukhov" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.649.5.5 5.649.5 12a11.5 11.5 0 0 0 7.865 10.922c.576.108.784-.25.784-.555 0-.273-.01-1.18-.015-2.14-3.2.696-3.876-1.357-3.876-1.357-.523-1.33-1.278-1.684-1.278-1.684-1.045-.714.079-.699.079-.699 1.156.081 1.765 1.187 1.765 1.187 1.027 1.76 2.694 1.252 3.35.958.104-.744.402-1.253.731-1.54-2.554-.291-5.241-1.277-5.241-5.683 0-1.255.448-2.282 1.183-3.087-.118-.291-.513-1.463.113-3.05 0 0 .964-.309 3.16 1.18a10.89 10.89 0 0 1 5.754 0c2.194-1.489 3.157-1.18 3.157-1.18.628 1.587.233 2.759.115 3.05.737.805 1.182 1.832 1.182 3.087 0 4.417-2.691 5.389-5.253 5.674.413.355.781 1.053.781 2.123 0 1.534-.014 2.77-.014 3.146 0 .308.205.669.79.554A11.503 11.503 0 0 0 23.5 12C23.5 5.649 18.351.5 12 .5Z"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/ikendiukhov/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.48 2.48 0 1 0 5 8.46a2.48 2.48 0 0 0-.02-4.96ZM3 9h4v12H3Zm7 0h3.83v1.64h.05c.53-1.01 1.84-2.08 3.79-2.08 4.06 0 4.81 2.67 4.81 6.14V21h-4v-5.53c0-1.32-.03-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.92V21h-4Z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://x.com/IKendiukhov" target="_blank" rel="noopener" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m18.244 2 3.308 0-7.226 8.26L22.82 22h-6.648l-5.204-6.804L4.98 22H1.67l7.728-8.836L1.26 2h6.816l4.7 6.23L18.244 2Zm-1.16 18h1.833L7.08 3.896H5.113Z"/></svg>
+              X
+            </a>
+          </div>
+        </section>
+      </div>
+    </footer>
+  `;
+}
 
-      // Wrap around
-      if (p.x < 0) p.x = w;
-      if (p.x > w) p.x = 0;
-      if (p.y < 0) p.y = h;
-      if (p.y > h) p.y = 0;
+function injectShell() {
+  document.body.insertAdjacentHTML("afterbegin", shellMarkup());
+  document.body.insertAdjacentHTML("beforeend", footerMarkup());
+}
 
-      trails[i].push({ x: p.x, y: p.y });
-      if (trails[i].length > TRAIL_LENGTH) trails[i].shift();
-    }
-  }
+function bindMenu() {
+  const menuButton = document.querySelector(".menu-toggle");
+  const overlay = document.querySelector(".menu-overlay");
+  if (!menuButton || !overlay) return;
 
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
+  const setMenu = (open) => {
+    document.body.classList.toggle("menu-open", open);
+    menuButton.setAttribute("aria-expanded", String(open));
+    overlay.setAttribute("aria-hidden", String(!open));
+  };
 
-    // Draw trails
-    for (let i = 0; i < trails.length; i++) {
-      const trail = trails[i];
-      if (trail.length < 2) continue;
-      ctx.beginPath();
-      ctx.moveTo(trail[0].x, trail[0].y);
-      for (let j = 1; j < trail.length; j++) {
-        // Don't draw line if it wraps around
-        const dx = Math.abs(trail[j].x - trail[j - 1].x);
-        const dy = Math.abs(trail[j].y - trail[j - 1].y);
-        if (dx > 100 || dy > 100) {
-          ctx.moveTo(trail[j].x, trail[j].y);
-        } else {
-          ctx.lineTo(trail[j].x, trail[j].y);
-        }
-      }
-      const alpha = 0.04 + (i % 3) * 0.015;
-      const hue = 190 + (i % 20) * 4;
-      ctx.strokeStyle = `hsla(${hue}, 80%, 60%, ${alpha})`;
-      ctx.lineWidth = particles[i].size;
-      ctx.stroke();
-    }
-
-    // Draw connection lines between nearby particles
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0, 212, 255, ${0.03 * (1 - dist / 120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Draw particles
-    for (const p of particles) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 212, 255, 0.15)';
-      ctx.fill();
-    }
-  }
-
-  function loop() {
-    step();
-    draw();
-    requestAnimationFrame(loop);
-  }
-
-  resize();
-  createParticles();
-  loop();
-
-  window.addEventListener('resize', () => {
-    resize();
-    createParticles();
+  menuButton.addEventListener("click", () => {
+    setMenu(!document.body.classList.contains("menu-open"));
   });
-})();
 
-// --- Scroll Animations ---
-(function initScrollAnimations() {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-})();
-
-// --- Mobile Navigation ---
-(function initMobileNav() {
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  if (!toggle || !links) return;
-
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('open');
-    const isOpen = links.classList.contains('open');
-    toggle.setAttribute('aria-expanded', isOpen);
+  overlay.querySelectorAll("[data-close-menu], a").forEach((node) => {
+    node.addEventListener("click", () => setMenu(false));
   });
 
-  // Close on link click
-  links.querySelectorAll('a').forEach((a) => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenu(false);
+  });
+}
+
+function bindDemoForms() {
+  document.querySelectorAll("[data-demo-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const message = form.querySelector(".form-message");
+      if (message) {
+        message.hidden = false;
+      }
+      form.reset();
     });
   });
-})();
+}
 
-// --- Copy Install Command ---
-(function initCopySnippet() {
-  document.querySelectorAll('.install-snippet').forEach((el) => {
-    el.addEventListener('click', () => {
-      const text = 'pip install ergodicity-library';
-      navigator.clipboard.writeText(text).then(() => {
-        const icon = el.querySelector('.copy-icon');
-        if (icon) {
-          icon.textContent = '✓';
-          setTimeout(() => { icon.textContent = '⧉'; }, 1500);
-        }
-      });
-    });
-  });
-})();
-
-// --- Nav scroll background ---
-(function initNavScroll() {
-  const nav = document.querySelector('nav');
-  if (!nav) return;
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      nav.style.background = 'rgba(6, 6, 17, 0.92)';
-    } else {
-      nav.style.background = 'rgba(6, 6, 17, 0.75)';
-    }
-  });
-})();
+injectShell();
+bindMenu();
+bindDemoForms();
