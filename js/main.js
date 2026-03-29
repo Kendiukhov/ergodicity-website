@@ -118,18 +118,22 @@ function footerMarkup() {
     <footer class="footer">
       <div class="page-wrap footer-grid">
         <section class="footer-card">
-          <h2>Sign up for the newsletter</h2>
-          <p>Keep up with new releases, research notes, and updates from the Ergodicity Library.</p>
-          <form class="demo-form" data-demo-form>
-            <div class="demo-form__row">
-              <input class="field" type="text" name="firstName" placeholder="First Name" required>
-              <input class="field" type="text" name="lastName" placeholder="Last Name" required>
-            </div>
-            <input class="field" type="email" name="email" placeholder="Email" required>
-            <textarea class="field" name="message" placeholder="Message"></textarea>
-            <button class="button" type="submit">Submit</button>
-            <div class="form-message" hidden>Thanks for submitting!</div>
-          </form>
+          <h2>Contact form</h2>
+          <p>Use the embedded Google Form to send questions, feedback, or collaboration inquiries.</p>
+          <div class="google-form-embed">
+            <iframe
+              class="google-form-frame"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdgNZDIhi5MEGhChEXLmrmBdr28SwQk0p6QTwbffKSCtW3w9w/viewform?embedded=true"
+              title="Ergodicity Library contact form"
+              loading="lazy"
+            >
+              Loading…
+            </iframe>
+          </div>
+          <p class="caption">
+            If the embedded form does not load, open it directly
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgNZDIhi5MEGhChEXLmrmBdr28SwQk0p6QTwbffKSCtW3w9w/viewform?usp=dialog" target="_blank" rel="noopener">here</a>.
+          </p>
         </section>
         <section class="footer-card">
           <h2>Stay Connected with Us</h2>
