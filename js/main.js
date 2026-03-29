@@ -81,13 +81,6 @@ function shellMarkup() {
     .join("");
 
   return `
-    <div class="wix-banner">
-      <div class="page-wrap wix-banner__inner">
-        <span class="wix-banner__logo">WIX</span>
-        <span>This website was built on Wix. Create yours today.</span>
-        <a class="wix-banner__cta" href="https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&adsVersion=banner_2024&orig_msid=21c90856-25fc-467c-8d3f-a7fc623d47c2" target="_blank" rel="noopener">Get Started</a>
-      </div>
-    </div>
     <header class="site-header">
       <div class="page-wrap site-header__inner">
         <a class="site-brand" href="${internalLinks.home}">
@@ -146,11 +139,6 @@ function footerMarkup() {
             <a href="https://chatgpt.com/g/g-6a3y1kBrK-ergodicitygpt" target="_blank" rel="noopener">ErgodicityGPT</a>
             <a href="https://linktr.ee/kendiukhov" target="_blank" rel="noopener">Contact Us</a>
           </div>
-          <form class="subscribe-form" data-demo-form>
-            <input class="field" type="email" name="subscribeEmail" placeholder="Enter Your Email" required>
-            <button class="button button--ghost" type="submit">Subscribe</button>
-            <div class="form-message" hidden>Thanks for subscribing!</div>
-          </form>
           <div class="social-row">
             <a href="https://github.com/Kendiukhov" target="_blank" rel="noopener" aria-label="GitHub">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.649.5.5 5.649.5 12a11.5 11.5 0 0 0 7.865 10.922c.576.108.784-.25.784-.555 0-.273-.01-1.18-.015-2.14-3.2.696-3.876-1.357-3.876-1.357-.523-1.33-1.278-1.684-1.278-1.684-1.045-.714.079-.699.079-.699 1.156.081 1.765 1.187 1.765 1.187 1.027 1.76 2.694 1.252 3.35.958.104-.744.402-1.253.731-1.54-2.554-.291-5.241-1.277-5.241-5.683 0-1.255.448-2.282 1.183-3.087-.118-.291-.513-1.463.113-3.05 0 0 .964-.309 3.16 1.18a10.89 10.89 0 0 1 5.754 0c2.194-1.489 3.157-1.18 3.157-1.18.628 1.587.233 2.759.115 3.05.737.805 1.182 1.832 1.182 3.087 0 4.417-2.691 5.389-5.253 5.674.413.355.781 1.053.781 2.123 0 1.534-.014 2.77-.014 3.146 0 .308.205.669.79.554A11.503 11.503 0 0 0 23.5 12C23.5 5.649 18.351.5 12 .5Z"/></svg>
@@ -200,19 +188,5 @@ function bindMenu() {
   });
 }
 
-function bindDemoForms() {
-  document.querySelectorAll("[data-demo-form]").forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const message = form.querySelector(".form-message");
-      if (message) {
-        message.hidden = false;
-      }
-      form.reset();
-    });
-  });
-}
-
 injectShell();
 bindMenu();
-bindDemoForms();
