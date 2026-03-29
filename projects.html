@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Ergodicity Library</title>
+  <meta name="description" content="Open source projects by Ihor Kendiukhov — from stochastic processes to AI safety.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∞</text></svg>">
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-icon">∞</span>
+        Ergodicity Library
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="#">About</a>
+          <ul class="dropdown-menu">
+            <li><a href="about-library.html">The Library</a></li>
+            <li><a href="about-author.html">The Author</a></li>
+          </ul>
+        </li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="development.html">Development</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="https://github.com/Kendiukhov/ergodicity_library" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+        <a href="https://pypi.org/project/ergodicity/" target="_blank" rel="noopener" class="btn-install">pip install</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="section-label fade-in">Open Source</div>
+        <h1 class="fade-in">Projects</h1>
+        <p class="page-desc fade-in">Open source repositories spanning stochastic analysis, AI safety, programming languages, and virtual physics.</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="projects-grid stagger-children">
+          <a href="https://github.com/Kendiukhov/ergodicity_library" target="_blank" rel="noopener" class="project-card fade-in">
+            <div class="project-card-header">
+              <h3>ergodicity_library</h3>
+              <div class="project-stars">★ 13</div>
+            </div>
+            <p>The main library — a comprehensive Python toolkit for stochastic processes, ergodicity economics, and time-average analysis. Features symbolic SDE solving, AI agents, and multi-core simulation.</p>
+            <span class="project-lang lang-python">Python</span>
+          </a>
+
+          <a href="https://github.com/Kendiukhov/aisafetyconnect" target="_blank" rel="noopener" class="project-card fade-in">
+            <div class="project-card-header">
+              <h3>aisafetyconnect</h3>
+              <div class="project-stars">★ 6</div>
+            </div>
+            <p>AI safety connection platform — tools and resources for connecting researchers and practitioners working on AI alignment and safety.</p>
+            <span class="project-lang lang-python">Python</span>
+          </a>
+
+          <a href="https://github.com/Kendiukhov/clippy" target="_blank" rel="noopener" class="project-card fade-in">
+            <div class="project-card-header">
+              <h3>clippy</h3>
+              <div class="project-stars">★ 2</div>
+            </div>
+            <p>A JavaScript-based project exploring interactive assistant interfaces and AI-powered user experience patterns.</p>
+            <span class="project-lang lang-javascript">JavaScript</span>
+          </a>
+
+          <a href="https://github.com/Kendiukhov/LeanRustLisp" target="_blank" rel="noopener" class="project-card fade-in">
+            <div class="project-card-header">
+              <h3>LeanRustLisp</h3>
+              <div class="project-stars">★ 2</div>
+            </div>
+            <p>A programming language project combining ideas from Lean, Rust, and Lisp — exploring the intersection of formal verification and systems programming.</p>
+            <span class="project-lang lang-rust">Rust</span>
+          </a>
+
+          <a href="https://github.com/Kendiukhov/Virtual-Physics-Benchmark" target="_blank" rel="noopener" class="project-card fade-in">
+            <div class="project-card-header">
+              <h3>Virtual-Physics-Benchmark</h3>
+              <div class="project-stars">★ 1</div>
+            </div>
+            <p>A benchmark harness where AI agents attempt to rediscover hidden physical laws through experiments in virtual worlds. Tests scientific reasoning capabilities.</p>
+            <span class="project-lang lang-python">Python</span>
+          </a>
+
+          <a href="https://github.com/Kendiukhov" target="_blank" rel="noopener" class="project-card fade-in">
+            <div class="project-card-header">
+              <h3>live_ai</h3>
+              <div class="project-stars"></div>
+            </div>
+            <p>Experimental project exploring live AI systems and real-time artificial intelligence applications.</p>
+            <span class="project-lang lang-python">Python</span>
+          </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;" class="fade-in">
+          <a href="https://github.com/Kendiukhov" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg viewBox="0 0 16 16" fill="currentColor" width="18" height="18"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View All Repositories
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Ergodicity Library</div>
+          <p class="footer-desc">A Python toolkit for stochastic processes, ergodicity economics, and time-average analysis. Free and open source under the MIT License.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="https://kendiukhov.github.io/ergodicity_library" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://pypi.org/project/ergodicity/" target="_blank" rel="noopener">PyPI Package</a></li>
+            <li><a href="https://github.com/Kendiukhov/ergodicity_library" target="_blank" rel="noopener">GitHub Repository</a></li>
+            <li><a href="https://arxiv.org/abs/2402.03374" target="_blank" rel="noopener">ArXiv Papers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ikendiukhov/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://scholar.google.com/citations?user=zvQylCUAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+            <li><a href="https://www.researchgate.net/profile/Ihor-Kendiukhov" target="_blank" rel="noopener">ResearchGate</a></li>
+            <li><a href="https://kendiukhov.medium.com/" target="_blank" rel="noopener">Medium</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2024 Ihor Kendiukhov. Open source under MIT License.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

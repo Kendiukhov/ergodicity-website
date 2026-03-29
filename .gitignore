@@ -1,0 +1,6 @@
+.DS_Store
+*.swp
+*.swo
+*~
+.env
+wix_site_content_report.md

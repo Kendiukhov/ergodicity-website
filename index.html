@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ergodicity Library — Python Toolkit for Stochastic Processes</title>
+  <meta name="description" content="A comprehensive Python toolkit for stochastic processes, ergodicity economics, and time-average analysis.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∞</text></svg>">
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-icon">∞</span>
+        Ergodicity Library
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="#">About</a>
+          <ul class="dropdown-menu">
+            <li><a href="about-library.html">The Library</a></li>
+            <li><a href="about-author.html">The Author</a></li>
+          </ul>
+        </li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="development.html">Development</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="https://github.com/Kendiukhov/ergodicity_library" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+        <a href="https://pypi.org/project/ergodicity/" target="_blank" rel="noopener" class="btn-install">pip install</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-label fade-in">Open Source Python Library</div>
+      <h1 class="hero-title fade-in"><em>Ergodicity</em> Library</h1>
+      <p class="hero-subtitle fade-in">A comprehensive Python toolkit for stochastic processes, ergodicity economics, and time-average analysis</p>
+
+      <div class="hero-actions fade-in">
+        <a href="https://pypi.org/project/ergodicity/" target="_blank" rel="noopener" class="btn btn-primary">
+          Get Started
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"/></svg>
+        </a>
+        <a href="https://kendiukhov.github.io/ergodicity_library" target="_blank" rel="noopener" class="btn btn-secondary">Documentation</a>
+        <a href="https://github.com/Kendiukhov/ergodicity_library" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg viewBox="0 0 16 16" fill="currentColor" width="18" height="18"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+
+      <div class="install-snippet fade-in" title="Click to copy">
+        <span class="prompt">$</span>
+        <span>pip install ergodicity-library</span>
+        <span class="copy-icon">⧉</span>
+      </div>
+
+      <div class="hero-code fade-in">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <code>
+          <span class="code-keyword">from</span> <span class="code-var">ergodicity.process.basic</span> <span class="code-keyword">import</span> <span class="code-function">BrownianMotion</span><br>
+          <br>
+          <span class="code-var">bm</span> = <span class="code-function">BrownianMotion</span>()<br>
+          <span class="code-var">data</span> = <span class="code-var">bm</span>.<span class="code-function">simulate</span>(<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-var">t</span>=<span class="code-number">10</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-var">timestep</span>=<span class="code-number">0.1</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-var">num_instance</span>=<span class="code-number">1000</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-var">plot</span>=<span class="code-keyword">True</span><br>
+          )
+        </code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section>
+    <div class="container">
+      <div class="section-header-centered">
+        <div class="section-label fade-in">Capabilities</div>
+        <h2 class="section-title fade-in">Everything you need for<br>stochastic analysis</h2>
+        <p class="section-subtitle centered fade-in">From simulating Brownian motion to training AI agents under uncertainty — a complete research toolkit.</p>
+      </div>
+
+      <div class="features-grid stagger-children">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">∿</div>
+          <h3>Stochastic Processes</h3>
+          <p>Simulate and visualize Brownian motion, Lévy processes, fractional processes, and custom stochastic dynamics with full parameter control.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">∂</div>
+          <h3>Symbolic SDE Solver</h3>
+          <p>The most powerful symbolic stochastic differential equation solver developed in Python. Supports systems of SDEs and partial SDEs.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⟨⟩</div>
+          <h3>Time &amp; Ensemble Averages</h3>
+          <p>Analyze ergodic properties, convergence behavior, and the divergence between time averages and ensemble expectations.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">◈</div>
+          <h3>Artificial Agents</h3>
+          <p>Create and train AI agents for decision-making under uncertainty using evolutionary algorithms and neural networks.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⫘</div>
+          <h3>Multi-core Computing</h3>
+          <p>Parallel processing support for large-scale simulations. Run thousands of process instances across all available cores.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">◐</div>
+          <h3>Dynamic Visualization</h3>
+          <p>3D interactive graphs, animated trajectories, and publication-ready plots with Matplotlib and custom rendering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Ergodicity Library</div>
+          <p class="footer-desc">A Python toolkit for stochastic processes, ergodicity economics, and time-average analysis. Free and open source under the MIT License.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="https://kendiukhov.github.io/ergodicity_library" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://pypi.org/project/ergodicity/" target="_blank" rel="noopener">PyPI Package</a></li>
+            <li><a href="https://github.com/Kendiukhov/ergodicity_library" target="_blank" rel="noopener">GitHub Repository</a></li>
+            <li><a href="https://arxiv.org/abs/2402.03374" target="_blank" rel="noopener">ArXiv Papers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ikendiukhov/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://scholar.google.com/citations?user=zvQylCUAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+            <li><a href="https://www.researchgate.net/profile/Ihor-Kendiukhov" target="_blank" rel="noopener">ResearchGate</a></li>
+            <li><a href="https://kendiukhov.medium.com/" target="_blank" rel="noopener">Medium</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2024 Ihor Kendiukhov. Open source under MIT License.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
